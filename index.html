@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <!--================================================================-->
+
+    <!-- Remove body margins -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+        }
+    </style>
+
+    <!--================================================================-->
+
+    <!-- HTML -->
+    <head>
+        <title>F A S T C O S B Y</title>
+    </head>
+    <body onclick="generate()">
+        <h3 id="status" style="position: absolute; color: white;"></h3>
+        <img src="" width=100% height=100% id="cosby">
+    </body>
+
+    <!--================================================================-->
+
+    <!-- Random GIF Script -->
+    <script>
+        // Remember what the last GIF was
+        var previousNum = 0;
+
+        // Page Elements
+        var img = document.getElementById("cosby");
+
+        // Deliver content when page loads
+        window.onload = function() {
+            generate();
+        };
+
+        function generate() {
+            document.getElementById("status").innerHTML = "Fetching new Cosby..."; 
+
+            var num = previousNum;
+            while (num == previousNum) {
+                num = Math.floor(Math.random() * 67) + 1;
+                console.log(num);
+            }
+            previousNum = num;
+
+            num = num.toString();
+            var length = 4 - (num.length + 1);
+
+            for (var i = 0; i < length; i++) {
+                num = "0" + num;
+            }
+
+            var url = "http://www.instantcosby.com/img/" + num + ".gif";
+            img.src = url;
+        }
+
+        img.onload = function () {
+            document.getElementById("status").innerHTML = "Click for a new Cosby";      
+        };
+    </script>
+</html>
