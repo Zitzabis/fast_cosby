@@ -2,7 +2,7 @@
 <html>
     <!--================================================================-->
 
-    <!-- Remove body margins -->
+    <!-- Remove body margins and set content to be full page -->
     <style>
         * {
             margin: 0;
@@ -21,8 +21,10 @@
         <title>F A S T C O S B Y</title>
     </head>
     <body onclick="generate()">
+        <!-- Status -->
         <h3 id="status" style="position: absolute; color: white;"></h3>
-        <img src="" width=100% height=100% id="cosby">
+        <!-- Image -->
+        <img src="" width=100% height=100% id="cosby"> Image
     </body>
 
     <!--================================================================-->
@@ -40,9 +42,12 @@
             generate();
         };
 
+        // Generate new image
         function generate() {
+            // Set status
             document.getElementById("status").innerHTML = "Fetching new Cosby..."; 
 
+            // Generate a new GIF number and checks against a dupe
             var num = previousNum;
             while (num == previousNum) {
                 num = Math.floor(Math.random() * 67) + 1;
@@ -50,19 +55,25 @@
             }
             previousNum = num;
 
-            num = num.toString();
-            var length = 4 - (num.length + 1);
 
+            num = num.toString(); // Convert to a string
+            var length = 4 - (num.length + 1); // Determine the length of the string
+
+            // Add Padding to the string
             for (var i = 0; i < length; i++) {
                 num = "0" + num;
             }
 
+            // Set the image
             var url = "http://www.instantcosby.com/img/" + num + ".gif";
             img.src = url;
         }
 
+        // Wait until the image is loaded and then set status
         img.onload = function () {
             document.getElementById("status").innerHTML = "Click for a new Cosby";      
         };
     </script>
+
+    <!--================================================================-->
 </html>
