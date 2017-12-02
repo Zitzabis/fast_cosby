@@ -2,3 +2,5 @@
 To prove that that the Instant Cosby site could be massively simplified.
 
 This systems contains all contant inside a single HTML document and reduces on duplicate GIF generation.
+
+http://cosby.zitzasoft.com/
